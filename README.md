@@ -103,7 +103,7 @@ ssh -p 22 tunnel-user@myserver.example.com -N -R myserver.example.com:2222:local
 while that is running, from e.g. your laptop try to connect to the client via the reverse tunnel:
 
 ```
-ssh -p 2222 tunnel-user@myserver.example.com
+ssh -p 2222 client-user@myserver.example.com
 ```
 
 You should get a password prompt (or a shell if you have pubkey authentication set up).
