@@ -1,10 +1,12 @@
 [Unit]
-Description=Keeps a reverse tunnel to 'myserver.example.com' open
+Description=Keeps a reverse tunnel to server open
 After=network.target
 
 [Service]
 User=tunnel-user
-ExecStart=/usr/local/bin/autossh_loop -M 0 -N -q -o "ServerAliveInterval=60" -o "ServerAliveCountMax=3" -p 22 -l tunnel-user myserver.example.com -R myserver.example.com:2222:localhost:22
+ExecStart=/usr/bin/autossh -M 0 -N -q -o "ServerAliveInterval=60" -o "ServerAliveCountMax=3" -p 22 -l tunnel-user myserver.example.com -R myserver.example.com:2222:localhost:22
+Restart=always
+RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
